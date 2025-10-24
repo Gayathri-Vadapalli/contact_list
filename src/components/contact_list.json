@@ -1,0 +1,404 @@
+{
+  "contacts": [
+    {
+      "name": "Dad",
+      "phone": "+91 98765 43210",
+      "email": "ravi.kumar@gmail.com",
+      "address": "12, MG Road, Bengaluru, Karnataka",
+      "relation": "Father",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Mom",
+      "phone": "+91 98234 55678",
+      "email": "anita.reddy@yahoo.com",
+      "address": "12, MG Road, Bengaluru, Karnataka",
+      "relation": "Mother",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Sanjay Kumar",
+      "phone": "+91 99876 22134",
+      "email": "sanjay.kumar@outlook.com",
+      "address": "45, Sector 21, Chandigarh",
+      "relation": "Brother",
+      "tags": ["Family", "Friends"]
+    },
+    {
+      "name": "Priya Sharma",
+      "phone": "+91 91234 77890",
+      "email": "priya.sharma@gmail.com",
+      "address": "9, Lodhi Colony, New Delhi",
+      "relation": "Sister",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Amit Verma",
+      "phone": "+91 97000 11345",
+      "email": "amit.verma@hotmail.com",
+      "address": "27, Park Street, Kolkata, West Bengal",
+      "relation": "Friend",
+      "tags": ["Friends"]
+    },
+    {
+      "name": "Neha Patel",
+      "phone": "+91 98670 45012",
+      "email": "neha.patel@gmail.com",
+      "address": "8A, Ellis Bridge, Ahmedabad, Gujarat",
+      "relation": "Cousin",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Arjun Mehta",
+      "phone": "+91 99987 22011",
+      "email": "arjun.mehta@rediffmail.com",
+      "address": "52, Church Street, Bengaluru, Karnataka",
+      "relation": "Colleague",
+      "tags": ["Job"]
+    },
+    {
+      "name": "Sneha Iyer",
+      "phone": "+91 98745 11890",
+      "email": "sneha.iyer@gmail.com",
+      "address": "12, T Nagar, Chennai, Tamil Nadu",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Rahul Nair",
+      "phone": "+91 90212 66543",
+      "email": "rahul.nair@gmail.com",
+      "address": "22, Marine Drive, Kochi, Kerala",
+      "relation": "Cousin",
+      "tags": ["Family", "Sports"]
+    },
+    {
+      "name": "Kavya Menon",
+      "phone": "+91 99123 45876",
+      "email": "kavya.menon@yahoo.com",
+      "address": "89, Brigade Road, Bengaluru, Karnataka",
+      "relation": "Friend",
+      "tags": ["Friends", "Gaming"]
+    },
+    {
+      "name": "Manoj Gupta",
+      "phone": "+91 98200 33221",
+      "email": "manoj.gupta@outlook.com",
+      "address": "Plot 55, Andheri East, Mumbai, Maharashtra",
+      "relation": "Uncle",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Divya Singh",
+      "phone": "+91 98450 55609",
+      "email": "divya.singh@gmail.com",
+      "address": "14, Rajendra Nagar, Lucknow, Uttar Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Nikhil Das",
+      "phone": "+91 99087 11543",
+      "email": "nikhil.das@gmail.com",
+      "address": "23, Salt Lake, Kolkata, West Bengal",
+      "relation": "Colleague",
+      "tags": ["Job", "Developers"]
+    },
+    {
+      "name": "Aarav Joshi",
+      "phone": "+91 98671 99988",
+      "email": "aarav.joshi@gmail.com",
+      "address": "11, Kothrud, Pune, Maharashtra",
+      "relation": "Friend",
+      "tags": ["Friends", "Sports"]
+    },
+    {
+      "name": "Meera Rao",
+      "phone": "+91 98111 77654",
+      "email": "meera.rao@gmail.com",
+      "address": "5, Gachibowli, Hyderabad, Telangana",
+      "relation": "Cousin",
+      "tags": ["Family", "Designers"]
+    },
+    {
+      "name": "Vikram Singh",
+      "phone": "+91 97654 32109",
+      "email": "vikram.singh@gmail.com",
+      "address": "34, Connaught Place, New Delhi",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Ritu Agarwal",
+      "phone": "+91 98876 54321",
+      "email": "ritu.agarwal@yahoo.com",
+      "address": "67, Hazratganj, Lucknow, Uttar Pradesh",
+      "relation": "Colleague",
+      "tags": ["Job", "Developers"]
+    },
+    {
+      "name": "Karan Malhotra",
+      "phone": "+91 99988 77665",
+      "email": "karan.malhotra@hotmail.com",
+      "address": "89, Sector 17, Chandigarh",
+      "relation": "Friend",
+      "tags": ["Friends", "Gaming"]
+    },
+    {
+      "name": "Anjali Kapoor",
+      "phone": "+91 98123 45678",
+      "email": "anjali.kapoor@gmail.com",
+      "address": "12, Bandra West, Mumbai, Maharashtra",
+      "relation": "Sister-in-law",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Rohit Sharma",
+      "phone": "+91 97000 88899",
+      "email": "rohit.sharma@outlook.com",
+      "address": "45, Jayanagar, Bengaluru, Karnataka",
+      "relation": "Friend",
+      "tags": ["Friends", "Sports"]
+    },
+    {
+      "name": "Pooja Desai",
+      "phone": "+91 98765 11234",
+      "email": "pooja.desai@gmail.com",
+      "address": "23, SG Highway, Ahmedabad, Gujarat",
+      "relation": "Colleague",
+      "tags": ["Job", "Designers"]
+    },
+    {
+      "name": "Abhishek Jain",
+      "phone": "+91 99876 55443",
+      "email": "abhishek.jain@rediffmail.com",
+      "address": "56, Civil Lines, Jaipur, Rajasthan",
+      "relation": "Cousin",
+      "tags": ["Family", "Developers"]
+    },
+    {
+      "name": "Shreya Bhatt",
+      "phone": "+91 98543 21098",
+      "email": "shreya.bhatt@gmail.com",
+      "address": "78, Koramangala, Bengaluru, Karnataka",
+      "relation": "Friend",
+      "tags": ["Friends", "Gaming"]
+    },
+    {
+      "name": "Deepak Kumar",
+      "phone": "+91 97654 87654",
+      "email": "deepak.kumar@yahoo.com",
+      "address": "34, Model Town, Delhi",
+      "relation": "Uncle",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Nisha Reddy",
+      "phone": "+91 98234 56789",
+      "email": "nisha.reddy@hotmail.com",
+      "address": "12, Jubilee Hills, Hyderabad, Telangana",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Suresh Yadav",
+      "phone": "+91 99123 77888",
+      "email": "suresh.yadav@gmail.com",
+      "address": "67, Gomti Nagar, Lucknow, Uttar Pradesh",
+      "relation": "Colleague",
+      "tags": ["Job", "Sports"]
+    },
+    {
+      "name": "Ananya Srivastava",
+      "phone": "+91 98987 65432",
+      "email": "ananya.srivastava@outlook.com",
+      "address": "89, Park Street, Kolkata, West Bengal",
+      "relation": "Friend",
+      "tags": ["Friends", "Designers"]
+    },
+    {
+      "name": "Rajesh Pillai",
+      "phone": "+91 97333 44555",
+      "email": "rajesh.pillai@gmail.com",
+      "address": "23, MG Road, Kochi, Kerala",
+      "relation": "Father-in-law",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Sunita Mishra",
+      "phone": "+91 98777 66554",
+      "email": "sunita.mishra@yahoo.com",
+      "address": "45, Patna City, Patna, Bihar",
+      "relation": "Aunt",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Arpit Gupta",
+      "phone": "+91 99654 32178",
+      "email": "arpit.gupta@gmail.com",
+      "address": "12, Indore Central, Indore, Madhya Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Developers"]
+    },
+    {
+      "name": "Swati Chopra",
+      "phone": "+91 98432 11098",
+      "email": "swati.chopra@hotmail.com",
+      "address": "56, Sector 34, Gurgaon, Haryana",
+      "relation": "Colleague",
+      "tags": ["Job", "Gaming"]
+    },
+    {
+      "name": "Manish Tiwari",
+      "phone": "+91 97888 99000",
+      "email": "manish.tiwari@outlook.com",
+      "address": "78, Hazratganj, Lucknow, Uttar Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Sports"]
+    },
+    {
+      "name": "Priyanka Modi",
+      "phone": "+91 98567 43210",
+      "email": "priyanka.modi@gmail.com",
+      "address": "34, Satellite, Ahmedabad, Gujarat",
+      "relation": "Cousin",
+      "tags": ["Family", "Designers"]
+    },
+    {
+      "name": "Harsh Agrawal",
+      "phone": "+91 99321 54687",
+      "email": "harsh.agrawal@rediffmail.com",
+      "address": "89, Vaishali Nagar, Jaipur, Rajasthan",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Tanvi Khanna",
+      "phone": "+91 98654 32190",
+      "email": "tanvi.khanna@gmail.com",
+      "address": "15, Civil Lines, Ludhiana, Punjab",
+      "relation": "Friend",
+      "tags": ["Friends", "Developers"]
+    },
+    {
+      "name": "Gaurav Saxena",
+      "phone": "+91 97543 21876",
+      "email": "gaurav.saxena@outlook.com",
+      "address": "42, Malviya Nagar, Bhopal, Madhya Pradesh",
+      "relation": "Colleague",
+      "tags": ["Job", "Gaming"]
+    },
+    {
+      "name": "Ritika Bansal",
+      "phone": "+91 98321 65498",
+      "email": "ritika.bansal@yahoo.com",
+      "address": "67, Model Town, Amritsar, Punjab",
+      "relation": "Cousin",
+      "tags": ["Family", "Sports"]
+    },
+    {
+      "name": "Akash Tripathi",
+      "phone": "+91 99876 54321",
+      "email": "akash.tripathi@gmail.com",
+      "address": "23, Aliganj, Lucknow, Uttar Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Designers"]
+    },
+    {
+      "name": "Ishita Sinha",
+      "phone": "+91 98765 43298",
+      "email": "ishita.sinha@hotmail.com",
+      "address": "78, Boring Road, Patna, Bihar",
+      "relation": "Colleague",
+      "tags": ["Job", "Developers"]
+    },
+    {
+      "name": "Aditya Rathi",
+      "phone": "+91 97654 32187",
+      "email": "aditya.rathi@rediffmail.com",
+      "address": "56, Vijay Nagar, Indore, Madhya Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Gaming"]
+    },
+    {
+      "name": "Simran Kaur",
+      "phone": "+91 98432 17650",
+      "email": "simran.kaur@gmail.com",
+      "address": "34, Green Avenue, Amritsar, Punjab",
+      "relation": "Sister",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Varun Aggarwal",
+      "phone": "+91 99123 45672",
+      "email": "varun.aggarwal@outlook.com",
+      "address": "12, Sector 15, Faridabad, Haryana",
+      "relation": "Friend",
+      "tags": ["Friends", "Sports"]
+    },
+    {
+      "name": "Pallavi Joshi",
+      "phone": "+91 98567 89123",
+      "email": "pallavi.joshi@yahoo.com",
+      "address": "89, Shivaji Nagar, Pune, Maharashtra",
+      "relation": "Colleague",
+      "tags": ["Job", "Designers"]
+    },
+    {
+      "name": "Siddharth Malhotra",
+      "phone": "+91 97321 65487",
+      "email": "siddharth.malhotra@gmail.com",
+      "address": "45, Defence Colony, New Delhi",
+      "relation": "Cousin",
+      "tags": ["Family", "Developers"]
+    },
+    {
+      "name": "Kirti Sharma",
+      "phone": "+91 98654 78932",
+      "email": "kirti.sharma@hotmail.com",
+      "address": "67, C Scheme, Jaipur, Rajasthan",
+      "relation": "Friend",
+      "tags": ["Friends", "Gaming"]
+    },
+    {
+      "name": "Yash Pandey",
+      "phone": "+91 99876 12345",
+      "email": "yash.pandey@rediffmail.com",
+      "address": "23, Gomti Nagar Extension, Lucknow, Uttar Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Job"]
+    },
+    {
+      "name": "Shweta Arora",
+      "phone": "+91 98321 54786",
+      "email": "shweta.arora@gmail.com",
+      "address": "78, Rajouri Garden, New Delhi",
+      "relation": "Colleague",
+      "tags": ["Job", "Sports"]
+    },
+    {
+      "name": "Raghav Mittal",
+      "phone": "+91 97543 86921",
+      "email": "raghav.mittal@outlook.com",
+      "address": "56, Sector 62, Noida, Uttar Pradesh",
+      "relation": "Friend",
+      "tags": ["Friends", "Designers"]
+    },
+    {
+      "name": "Shreya Agarwal",
+      "phone": "+91 98765 21094",
+      "email": "shreya.agarwal@yahoo.com",
+      "address": "34, Hazratganj, Lucknow, Uttar Pradesh",
+      "relation": "Sister-in-law",
+      "tags": ["Family"]
+    },
+    {
+      "name": "Kartik Gupta",
+      "phone": "+91 99654 78123",
+      "email": "kartik.gupta@gmail.com",
+      "address": "12, Electronic City, Bengaluru, Karnataka",
+      "relation": "Friend",
+      "tags": ["Friends", "Developers"]
+    }
+  ]
+}
