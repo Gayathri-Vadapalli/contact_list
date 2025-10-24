@@ -1397,24 +1397,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 24px 0;
-  margin-top: 24px;
+  gap: 6px;
+  padding: 12px 0;
+  margin-top: 12px;
 }
 
 .pagination-btn {
   background: white;
   border: 1px solid #E2E6F0;
-  border-radius: 8px;
-  width: 40px;
-  height: 40px;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
   color: #4B5563;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   outline: none;
 }
@@ -1437,27 +1437,27 @@
 }
 
 .pagination-btn.page-number {
-  min-width: 40px;
+  min-width: 32px;
   width: auto;
-  padding: 0 12px;
+  padding: 0 10px;
 }
 
 .pagination-pages {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .pagination-ellipsis {
-  padding: 0 8px;
+  padding: 0 6px;
   color: #9CA3AF;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .page-info {
-  margin-left: 8px;
+  margin-left: 6px;
   color: #6B7280;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* Select Mode Styles */

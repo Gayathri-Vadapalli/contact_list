@@ -544,7 +544,7 @@ const ContactScreen = () => {
     );
   };
 
-  const AddContactModal = useCallback(() => {
+  const AddContactModal = () => {
     if (!showAddContact) return null;
 
     return (
@@ -639,9 +639,9 @@ const ContactScreen = () => {
         </div>
       </div>
     );
-  }, [showAddContact, newContact, handleNameChange, handlePhoneChange, handleEmailChange, handleAddressChange, handleRelationChange, handleAddContact]);
+  };
 
-  const EditContactModal = useCallback(() => {
+  const EditContactModal = () => {
     if (!showEditContact) return null;
 
     return (
@@ -736,9 +736,9 @@ const ContactScreen = () => {
         </div>
       </div>
     );
-  }, [showEditContact, editContact, handleEditNameChange, handleEditPhoneChange, handleEditEmailChange, handleEditAddressChange, handleEditRelationChange, handleEditContact]);
+  };
 
-  const DeleteConfirmModal = useCallback(() => {
+  const DeleteConfirmModal = () => {
     if (!showDeleteConfirm) return null;
 
     const getDeleteMessage = () => {
@@ -787,9 +787,8 @@ const ContactScreen = () => {
         </div>
       </div>
     );
-  }, [showDeleteConfirm, deleteType, contactToDelete, selectedContacts, confirmDelete, cancelDelete]);
-
-  const FilterPanel = useCallback(() => {
+  };
+  const FilterPanel = () => {
     if (!showFilter) return null;
 
     const availableTags = getAllTags();
@@ -849,7 +848,7 @@ const ContactScreen = () => {
         </div>
       </div>
     );
-  }, [showFilter, filterTag, contacts]);
+  };
 
   const ContactDetails = () => {
     if (!selectedContact) return null;
