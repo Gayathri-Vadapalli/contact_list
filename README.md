@@ -4,7 +4,7 @@ A modern, feature-rich contact management application built with React and Vite.
 
 ## 🚀 Live Demo
 
-**Deployed Application:** [Link will be provided here]
+[Live Application here](https://contact-list-lac-five.vercel.app/)
 
 ## ✨ Notable Features
 
