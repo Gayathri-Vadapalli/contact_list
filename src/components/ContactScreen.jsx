@@ -10,56 +10,25 @@ import {
   faPhone, 
   faEnvelope, 
   faMapMarkerAlt, 
-  faBirthdayCake, 
-  faUser, 
-  faTimes,
-  faCalendarAlt,
-  faComments,
-  faSms,
-  faTags,
-  faHome,
-  faBuilding,
-  faHeart,
-  faUserFriends,
-  faBriefcase,
-  faGamepad,
-  faCode,
-  faFootballBall,
-  faUsers,
+  faCheckCircle,
+  faTimesCircle,
+  faFilter,
   faPlus,
   faEdit,
   faTrash,
-  faStar,
-  faBookmark,
-  faFilter,
-  faDownload,
-  faUpload,
-  faCog,
-  faShareAlt,
-  faPrint,
-  faEye,
-  faEyeSlash,
-  faInfo,
-  faExclamationTriangle,
-  faCheckCircle,
-  faTimesCircle,
-  faQuestionCircle,
-  faUserMinus,
-  faUserEdit,
-  faUserCheck,
-  faAddressCard,
-  faIdBadge,
-  faGlobe,
-  faLink,
-  faCopy,
-  faCheck,
-  faExternalLinkAlt,
-  faChevronLeft,
-  faChevronRight,
-  faStepBackward,
-  faStepForward,
+  faTimes,
   faEllipsisV
 } from '@fortawesome/free-solid-svg-icons';
+
+// Import new components
+import AddContactModal from './AddContactModal';
+import EditContactModal from './EditContactModal';
+import DeleteConfirmModal from './DeleteConfirmModal';
+import ContactCard from './ContactCard';
+import FilterPanel from './FilterPanel';
+import ContactDetails from './ContactDetails';
+import PaginationControls from './PaginationControls';
+import BulkActionsBar from './BulkActionsBar';
 
 const ContactScreen = () => {
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
@@ -418,712 +387,6 @@ const ContactScreen = () => {
     return timestamps[timestampIndex];
   };
 
-  const getAllTags = () => {
-    const tagSet = new Set();
-    contacts.forEach(contact => {
-      contact.tags.forEach(tag => tagSet.add(tag));
-    });
-    return Array.from(tagSet);
-  };
-
-  const ContactCard = ({ contact }) => {
-    const isSelected = selectedContacts.has(contact.id);
-    const isDropdownActive = activeDropdown === contact.id;
-    
-    const handleCardClick = (e) => {
-      if (selectMode) {
-        e.stopPropagation();
-        handleContactSelect(contact, !isSelected);
-      } else {
-        setSelectedContact(contact);
-      }
-    };
-
-    const handleCheckboxClick = (e) => {
-      e.stopPropagation();
-      handleContactSelect(contact, !isSelected);
-    };
-
-    const handleDotsClick = (e) => {
-      e.stopPropagation();
-      setActiveDropdown(isDropdownActive ? null : contact.id);
-    };
-
-    const handleEditClick = (e) => {
-      e.stopPropagation();
-      setActiveDropdown(null);
-      openEditModal(contact);
-    };
-
-    const handleDeleteClick = (e) => {
-      e.stopPropagation();
-      setActiveDropdown(null);
-      openDeleteConfirm(contact, 'single');
-    };
-
-    return (
-      <div
-        className={`contact-card ${viewMode} ${selectMode ? 'select-mode' : ''} ${isSelected ? 'selected' : ''}`}
-        onClick={handleCardClick}
-      >
-        {selectMode && (
-          <div className="contact-checkbox">
-            <input
-              type="checkbox"
-              checked={isSelected}
-              onChange={handleCheckboxClick}
-              onClick={handleCheckboxClick}
-            />
-          </div>
-        )}
-        
-        {!selectMode && (
-          <div className="contact-menu">
-            <button 
-              className="contact-menu-btn"
-              onClick={handleDotsClick}
-              title="More options"
-            >
-              <FontAwesomeIcon icon={faEllipsisV} />
-            </button>
-            {isDropdownActive && (
-              <div className="contact-menu-dropdown">
-                <button 
-                  className="contact-menu-item"
-                  onClick={handleEditClick}
-                >
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </button>
-                <button 
-                  className="contact-menu-item delete"
-                  onClick={handleDeleteClick}
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                  Delete
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        
-        <div className="contact-avatar" style={{ backgroundColor: getRandomColor(contact.name) }}>
-          {getInitials(contact.name)}
-        </div>
-        <div className="contact-info">
-          <div className="contact-main-info">
-            <div className="contact-left">
-              <h3 className="contact-name">{contact.name}</h3>
-              <p className="contact-phone">{contact.phone}</p>
-            </div>
-            {viewMode === 'list' && (
-              <div className="contact-right">
-                <p className="contact-relation">{contact.relation}</p>
-                <p className="contact-email">{contact.email}</p>
-              </div>
-            )}
-          </div>
-          {viewMode === 'grid' && (
-            <>
-              <p className="contact-relation">{contact.relation}</p>
-              <div className="contact-tags">
-                {contact.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="tag"
-                    style={getTagStyle(tag)}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  };
-
-  const AddContactModal = () => {
-    if (!showAddContact) return null;
-
-    return (
-      <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowAddContact(false)}>
-        <div className="modal-content">
-          <div className="modal-header">
-            <h3>Add New Contact</h3>
-            <button
-              className="close-btn"
-              onClick={() => setShowAddContact(false)}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-          </div>
-          
-          <div className="modal-body">
-            <div className="form-group">
-              <label>Name *</label>
-              <input
-                type="text"
-                value={newContact.name}
-                onChange={handleNameChange}
-                placeholder="Enter full name"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Phone *</label>
-              <input
-                type="tel"
-                value={newContact.phone}
-                onChange={handlePhoneChange}
-                placeholder="Enter phone number"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                value={newContact.email}
-                onChange={handleEmailChange}
-                placeholder="Enter email address"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Address</label>
-              <input
-                type="text"
-                value={newContact.address}
-                onChange={handleAddressChange}
-                placeholder="Enter address"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Relation</label>
-              <select
-                value={newContact.relation}
-                onChange={handleRelationChange}
-              >
-                <option value="">Select relation</option>
-                <option value="Family">Family</option>
-                <option value="Friend">Friend</option>
-                <option value="Colleague">Colleague</option>
-                <option value="Business">Business</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          
-          <div className="modal-footer">
-            <button
-              className="action-btn secondary"
-              onClick={() => setShowAddContact(false)}
-            >
-              Cancel
-            </button>
-            <button
-              className="action-btn primary"
-              onClick={handleAddContact}
-              disabled={!newContact.name || !newContact.phone}
-            >
-              <FontAwesomeIcon icon={faPlus} /> Add Contact
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const EditContactModal = () => {
-    if (!showEditContact) return null;
-
-    return (
-      <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowEditContact(false)}>
-        <div className="modal-content">
-          <div className="modal-header">
-            <h3>Edit Contact</h3>
-            <button
-              className="close-btn"
-              onClick={() => setShowEditContact(false)}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-          </div>
-          
-          <div className="modal-body">
-            <div className="form-group">
-              <label>Name *</label>
-              <input
-                type="text"
-                value={editContact.name}
-                onChange={handleEditNameChange}
-                placeholder="Enter full name"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Phone *</label>
-              <input
-                type="tel"
-                value={editContact.phone}
-                onChange={handleEditPhoneChange}
-                placeholder="Enter phone number"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                value={editContact.email}
-                onChange={handleEditEmailChange}
-                placeholder="Enter email address"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Address</label>
-              <input
-                type="text"
-                value={editContact.address}
-                onChange={handleEditAddressChange}
-                placeholder="Enter address"
-                autoComplete="off"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Relation</label>
-              <select
-                value={editContact.relation}
-                onChange={handleEditRelationChange}
-              >
-                <option value="">Select relation</option>
-                <option value="Family">Family</option>
-                <option value="Friend">Friend</option>
-                <option value="Colleague">Colleague</option>
-                <option value="Business">Business</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          
-          <div className="modal-footer">
-            <button
-              className="action-btn secondary"
-              onClick={() => setShowEditContact(false)}
-            >
-              Cancel
-            </button>
-            <button
-              className="action-btn primary"
-              onClick={handleEditContact}
-              disabled={!editContact.name || !editContact.phone}
-            >
-              <FontAwesomeIcon icon={faEdit} /> Save Changes
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const DeleteConfirmModal = () => {
-    if (!showDeleteConfirm) return null;
-
-    const getDeleteMessage = () => {
-      if (deleteType === 'bulk') {
-        return `Are you sure you want to delete ${selectedContacts.size} contact${selectedContacts.size !== 1 ? 's' : ''}?`;
-      } else if (contactToDelete) {
-        return `Are you sure you want to delete ${contactToDelete.name}?`;
-      }
-      return 'Are you sure you want to delete this contact?';
-    };
-
-    return (
-      <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && cancelDelete()}>
-        <div className="modal-content delete-confirm-modal">
-          <div className="modal-header">
-            <h3>Delete Contact{deleteType === 'bulk' && selectedContacts.size > 1 ? 's' : ''}</h3>
-            <button
-              className="close-btn"
-              onClick={cancelDelete}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-          </div>
-          
-          <div className="modal-body">
-            <div className="delete-confirm-content">
-              <p className="delete-message">{getDeleteMessage()}</p>
-              <p className="delete-warning">This action cannot be undone.</p>
-            </div>
-          </div>
-          
-          <div className="modal-footer">
-            <button
-              className="action-btn secondary"
-              onClick={cancelDelete}
-            >
-              Cancel
-            </button>
-            <button
-              className="action-btn danger"
-              onClick={confirmDelete}
-            >
-              <FontAwesomeIcon icon={faTrash} /> Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  const FilterPanel = () => {
-    if (!showFilter) return null;
-
-    const availableTags = getAllTags();
-
-    const handleClearAndClose = () => {
-      setFilterTag('');
-      setShowFilter(false);
-    };
-
-    const handleApplyFilter = () => {
-      setShowFilter(false);
-    };
-
-    return (
-      <div className="filter-panel">
-        <div className="filter-header">
-          <h4>Filter Contacts</h4>
-          <button
-            className="close-btn small"
-            onClick={() => setShowFilter(false)}
-            title="Close"
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
-        </div>
-        
-        <div className="filter-content">
-          <div className="filter-group">
-            <label>Filter by Tag:</label>
-            <select
-              value={filterTag}
-              onChange={(e) => setFilterTag(e.target.value)}
-            >
-              <option value="">All Tags</option>
-              {availableTags.map(tag => (
-                <option key={tag} value={tag}>{tag}</option>
-              ))}
-            </select>
-          </div>
-          
-          <div className="filter-actions">
-            <button
-              className="action-btn secondary small"
-              onClick={handleClearAndClose}
-              title="Clear filter and close"
-            >
-              Clear Filter
-            </button>
-            <button
-              className="action-btn primary small"
-              onClick={handleApplyFilter}
-              title="Apply current filter"
-            >
-              Apply
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const ContactDetails = () => {
-    if (!selectedContact) return null;
-
-    return (
-      <div className="contact-details-panel">
-        <div className="contact-header">
-          <button
-            className="close-btn"
-            onClick={() => setSelectedContact(null)}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
-          <div className="contact-avatar-large" style={{ backgroundColor: getRandomColor(selectedContact.name) }}>
-            {getInitials(selectedContact.name)}
-          </div>
-          <h2>{selectedContact.name}</h2>
-          <p className="relation-text">{selectedContact.relation}</p>
-        </div>
-
-        <div className="contact-info-section">
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faPhone} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Phone</span>
-              <span className="info-value">{selectedContact.phone}</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Email</span>
-              <span className="info-value">{selectedContact.email}</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Address</span>
-              <span className="info-value">{selectedContact.address}</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faBirthdayCake} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Birthday</span>
-              <span className="info-value">Not specified</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faGlobe} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Website</span>
-              <span className="info-value">Not specified</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faUser} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content">
-              <span className="info-label">Relation</span>
-              <span className="info-value">{selectedContact.relation}</span>
-            </div>
-          </div>
-
-          <div className="info-item">
-            <div className="info-icon">
-              <FontAwesomeIcon icon={faTags} />
-            </div>
-            <div className="info-separator"></div>
-            <div className="info-content info-content-horizontal">
-              <span className="info-label">Tags</span>
-              <div className="tags-container">
-                {selectedContact.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="tag-large"
-                    style={getTagStyle(tag)}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="contact-actions">
-          <button className="action-btn primary">
-            <FontAwesomeIcon icon={faPhone} /> Call
-          </button>
-          <button className="action-btn secondary greyish">
-            <FontAwesomeIcon icon={faComments} /> Message
-          </button>
-          <button className="action-btn secondary greyish">
-            <FontAwesomeIcon icon={faEnvelope} /> Email
-          </button>
-          <button 
-            className="action-btn tertiary delete-icon-only inline"
-            onClick={() => {
-              openDeleteConfirm(selectedContact, 'single');
-            }}
-            title="Delete contact"
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </div>
-      </div>
-    );
-  };
-
-  const PaginationControls = () => {
-    if (totalPages <= 1) return null;
-
-    const getVisiblePages = () => {
-      const maxVisible = 5;
-      const halfVisible = Math.floor(maxVisible / 2);
-      
-      let startPage = Math.max(1, currentPage - halfVisible);
-      let endPage = Math.min(totalPages, startPage + maxVisible - 1);
-      
-      if (endPage - startPage + 1 < maxVisible) {
-        startPage = Math.max(1, endPage - maxVisible + 1);
-      }
-      
-      const pages = [];
-      for (let i = startPage; i <= endPage; i++) {
-        pages.push(i);
-      }
-      return pages;
-    };
-
-    const visiblePages = getVisiblePages();
-
-    return (
-      <div className="pagination-controls">
-        <button 
-          className="pagination-btn"
-          onClick={() => handlePageChange(1)}
-          disabled={currentPage === 1}
-          title="First page"
-        >
-          <FontAwesomeIcon icon={faStepBackward} />
-        </button>
-        
-        <button 
-          className="pagination-btn"
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          title="Previous page"
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-
-        <div className="pagination-pages">
-          {visiblePages[0] > 1 && (
-            <>
-              <button 
-                className="pagination-btn page-number"
-                onClick={() => handlePageChange(1)}
-              >
-                1
-              </button>
-              {visiblePages[0] > 2 && <span className="pagination-ellipsis">...</span>}
-            </>
-          )}
-          
-          {visiblePages.map(page => (
-            <button
-              key={page}
-              className={`pagination-btn page-number ${page === currentPage ? 'active' : ''}`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
-          
-          {visiblePages[visiblePages.length - 1] < totalPages && (
-            <>
-              {visiblePages[visiblePages.length - 1] < totalPages - 1 && <span className="pagination-ellipsis">...</span>}
-              <button 
-                className="pagination-btn page-number"
-                onClick={() => handlePageChange(totalPages)}
-              >
-                {totalPages}
-              </button>
-            </>
-          )}
-        </div>
-
-        <button 
-          className="pagination-btn"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          title="Next page"
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-        
-        <button 
-          className="pagination-btn"
-          onClick={() => handlePageChange(totalPages)}
-          disabled={currentPage === totalPages}
-          title="Last page"
-        >
-          <FontAwesomeIcon icon={faStepForward} />
-        </button>
-      </div>
-    );
-  };
-
-  const BulkActionsBar = () => {
-    if (!selectMode || selectedContacts.size === 0) return null;
-
-    return (
-      <div className="bulk-actions-bar">
-        <div className="bulk-actions-left">
-          <span className="selected-count">
-            {selectedContacts.size} contact{selectedContacts.size !== 1 ? 's' : ''} selected
-          </span>
-        </div>
-        <div className="bulk-actions-right">
-          <div className="bulk-action-edit-container">
-            {selectedContacts.size === 1 ? (
-              <button 
-                className="bulk-action-btn edit"
-                title="Edit contact"
-                onClick={() => {
-                  const contactId = Array.from(selectedContacts)[0];
-                  const contact = contacts.find(c => c.id === contactId);
-                  if (contact) {
-                    openEditModal(contact);
-                  }
-                }}
-              >
-                <FontAwesomeIcon icon={faEdit} /> Edit
-              </button>
-            ) : (
-              <div className="bulk-action-placeholder"></div>
-            )}
-          </div>
-          <button 
-            className="bulk-action-btn delete"
-            onClick={handleBulkDelete}
-            title="Delete contacts"
-          >
-            <FontAwesomeIcon icon={faTrash} /> Delete
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="contact-screen">
       <div className={`main-content ${selectedContact ? 'with-panel' : ''}`}>
@@ -1165,7 +428,13 @@ const ContactScreen = () => {
               >
                 <FontAwesomeIcon icon={faFilter} />
               </button>
-              <FilterPanel />
+              <FilterPanel 
+                showFilter={showFilter}
+                filterTag={filterTag}
+                setFilterTag={setFilterTag}
+                setShowFilter={setShowFilter}
+                contacts={contacts}
+              />
             </div>
             
             {/* View Toggle */}
@@ -1199,7 +468,13 @@ const ContactScreen = () => {
         {/* Filter Panel */}
 
         {/* Bulk Actions Bar */}
-        <BulkActionsBar />
+        <BulkActionsBar 
+          selectMode={selectMode}
+          selectedContacts={selectedContacts}
+          contacts={contacts}
+          openEditModal={openEditModal}
+          handleBulkDelete={handleBulkDelete}
+        />
 
         {/* Search and Controls Bar */}
         <div className="controls-bar">
@@ -1402,7 +677,22 @@ const ContactScreen = () => {
           /* Grid View */
           <div className={`contacts-container ${viewMode}`}>
             {paginatedContacts.map((contact, index) => (
-              <ContactCard key={index} contact={contact} />
+              <ContactCard 
+                key={index} 
+                contact={contact}
+                viewMode={viewMode}
+                selectMode={selectMode}
+                selectedContacts={selectedContacts}
+                activeDropdown={activeDropdown}
+                handleContactSelect={handleContactSelect}
+                setSelectedContact={setSelectedContact}
+                setActiveDropdown={setActiveDropdown}
+                openEditModal={openEditModal}
+                openDeleteConfirm={openDeleteConfirm}
+                getInitials={getInitials}
+                getRandomColor={getRandomColor}
+                getTagStyle={getTagStyle}
+              />
             ))}
           </div>
         )}
@@ -1420,16 +710,48 @@ const ContactScreen = () => {
         )}
 
         {/* Pagination Controls */}
-        <PaginationControls />
+        <PaginationControls 
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
       </div>
 
       {/* Contact Details Panel */}
-      {selectedContact && <ContactDetails />}
+      {selectedContact && (
+        <ContactDetails 
+          selectedContact={selectedContact}
+          setSelectedContact={setSelectedContact}
+          getInitials={getInitials}
+          getRandomColor={getRandomColor}
+          getTagStyle={getTagStyle}
+          openDeleteConfirm={openDeleteConfirm}
+        />
+      )}
       
       {/* Modals */}
-      <AddContactModal />
-      <EditContactModal />
-      <DeleteConfirmModal />
+      <AddContactModal 
+        showAddContact={showAddContact}
+        setShowAddContact={setShowAddContact}
+        newContact={newContact}
+        setNewContact={setNewContact}
+        handleAddContact={handleAddContact}
+      />
+      <EditContactModal 
+        showEditContact={showEditContact}
+        setShowEditContact={setShowEditContact}
+        editContact={editContact}
+        setEditContact={setEditContact}
+        handleEditContact={handleEditContact}
+      />
+      <DeleteConfirmModal 
+        showDeleteConfirm={showDeleteConfirm}
+        deleteType={deleteType}
+        selectedContacts={selectedContacts}
+        contactToDelete={contactToDelete}
+        cancelDelete={cancelDelete}
+        confirmDelete={confirmDelete}
+      />
     </div>
   );
 };
