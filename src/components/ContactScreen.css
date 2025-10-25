@@ -44,6 +44,49 @@
   position: relative;
 }
 
+/* Dark Mode Toggle */
+.theme-toggle {
+  background: #FFFFFF;
+  border: 1px solid #E2E6F0;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #4B5563;
+  font-size: 16px;
+  outline: none;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: #F3F4F6;
+  border-color: #D1D5DB;
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1);
+}
+
+/* Dark mode styles for the toggle */
+.dark-mode .theme-toggle {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  color: #D4D4D4;
+}
+
+.dark-mode .theme-toggle:hover,
+.dark-mode .theme-toggle:focus {
+  background: #262626;
+  border-color: #555555;
+  color: #FFFFFF;
+}
+
 .filter-container {
   position: relative;
   display: inline-block;
@@ -1238,6 +1281,28 @@
   color: #6B7280;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* Sortable header styles */
+.contacts-table th.sortable,
+.contacts-table th .sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.contacts-table th.sortable:hover,
+.contacts-table th .sortable:hover {
+  color: #374151;
+}
+
+.contacts-table th.active-sort,
+.contacts-table th .active-sort {
+  color: #7C3AED;
+}
+
+.contacts-table th.active-sort svg,
+.contacts-table th .active-sort svg {
+  color: #7C3AED;
 }
 
 .contacts-table th svg {

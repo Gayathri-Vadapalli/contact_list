@@ -1,0 +1,572 @@
+/* ContactScreen-dark.css - Dark Mode Theme */
+
+/* Override light mode colors with dark mode palette */
+.dark-mode .contact-screen {
+  background: #0D0D0D;
+}
+
+.dark-mode .main-content {
+  background: #0D0D0D;
+}
+
+/* Header */
+.dark-mode .contact-header-bar {
+  background: #0D0D0D;
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .header-left h1 {
+  color: #E5E5E5;
+}
+
+.dark-mode .subtitle {
+  color: #A3A3A3;
+}
+
+/* Search */
+.dark-mode .search-input {
+  background: #262626;
+  border: 1px solid #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .search-input:focus {
+  border-color: #3B82F6;
+  background: #262626;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark-mode .search-input::placeholder {
+  color: #737373;
+}
+
+.dark-mode .search-icon {
+  color: #A3A3A3;
+}
+
+/* Control Buttons */
+.dark-mode .control-btn {
+  background: #1A1A1A;
+  color: #E5E5E5;
+  border: 1px solid #333333;
+}
+
+.dark-mode .control-btn:hover,
+.dark-mode .control-btn:focus {
+  background: #262626;
+}
+
+.dark-mode .control-btn.primary {
+  background: #2563EB;
+  color: #FFFFFF;
+  border: 1px solid #2563EB;
+}
+
+.dark-mode .control-btn.primary:hover,
+.dark-mode .control-btn.primary:focus {
+  background: #1E40AF;
+  border: 1px solid #1E40AF;
+}
+
+.dark-mode .control-btn.active {
+  background: #3B82F6;
+  color: #FFFFFF;
+  border: 1px solid #3B82F6;
+}
+
+.dark-mode .control-btn.active:hover {
+  background: #2563EB;
+  border: 1px solid #2563EB;
+}
+
+/* View Toggle */
+.dark-mode .view-toggle {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+}
+
+.dark-mode .view-btn {
+  color: #A3A3A3;
+}
+
+.dark-mode .view-btn:hover,
+.dark-mode .view-btn:focus {
+  background: #262626;
+}
+
+.dark-mode .view-btn.active {
+  background: #3B82F6;
+  color: #FFFFFF;
+}
+
+/* Contact Count */
+.dark-mode .contact-count {
+  color: #A3A3A3;
+}
+
+/* Contact Cards */
+.dark-mode .contact-card {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .contact-card:hover {
+  background: #262626;
+  border-color: #3B82F6;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Contact Menu */
+.dark-mode .contact-menu-btn {
+  color: #A3A3A3;
+}
+
+.dark-mode .contact-menu-btn:hover {
+  background: rgba(163, 163, 163, 0.1);
+  color: #D4D4D4;
+}
+
+.dark-mode .contact-menu-dropdown {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .contact-menu-item {
+  background: #1A1A1A;
+  color: #E5E5E5;
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .contact-menu-item:hover {
+  background: #262626;
+  color: #E5E5E5;
+}
+
+.dark-mode .contact-menu-item.delete {
+  color: #EF4444;
+  background: #1A1A1A;
+}
+
+.dark-mode .contact-menu-item.delete:hover {
+  background: #2D1B1B;
+  color: #EF4444;
+}
+
+/* Contact Info */
+.dark-mode .contact-name {
+  color: #E5E5E5;
+}
+
+.dark-mode .contact-phone,
+.dark-mode .contact-email {
+  color: #A3A3A3;
+}
+
+.dark-mode .contact-relation {
+  color: #737373;
+}
+
+/* Tags */
+.dark-mode .tag {
+  background: #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .tag-large {
+  background: #333333;
+  color: #E5E5E5;
+}
+
+/* Contact Details Panel */
+.dark-mode .contact-details-panel {
+  background: #1A1A1A;
+  border-left: 1px solid #333333;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Contact Header in Panel */
+.dark-mode .contact-header {
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+}
+
+/* Contact Info Section */
+.dark-mode .contact-info-section {
+  background: #1A1A1A;
+}
+
+.dark-mode .info-item {
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .info-icon {
+  color: #3B82F6;
+}
+
+.dark-mode .info-separator {
+  background-color: #333333;
+}
+
+.dark-mode .info-label {
+  color: #A3A3A3;
+}
+
+.dark-mode .info-value {
+  color: #E5E5E5;
+}
+
+/* Contact Actions */
+.dark-mode .contact-actions {
+  border-top: 1px solid #333333;
+}
+
+.dark-mode .action-btn.primary {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+.dark-mode .action-btn.primary:hover,
+.dark-mode .action-btn.primary:focus {
+  background: #1E40AF;
+}
+
+.dark-mode .action-btn.secondary {
+  background: #262626;
+  color: #E5E5E5;
+  border: 1px solid #333333;
+}
+
+.dark-mode .action-btn.secondary.greyish {
+  background: #262626;
+  color: #E5E5E5;
+  border: 1px solid #333333;
+}
+
+.dark-mode .action-btn.secondary:hover,
+.dark-mode .action-btn.secondary:focus,
+.dark-mode .action-btn.secondary.greyish:hover,
+.dark-mode .action-btn.secondary.greyish:focus {
+  background: #333333;
+}
+
+.dark-mode .action-btn.tertiary {
+  background: #262626;
+  color: #A3A3A3;
+}
+
+.dark-mode .action-btn.tertiary:hover,
+.dark-mode .action-btn.tertiary:focus {
+  background: #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .action-btn.tertiary.delete-icon-only {
+  background: #2D1B1B;
+  color: #EF4444;
+  border: 1px solid #3D2626;
+}
+
+.dark-mode .action-btn.tertiary.delete-icon-only:hover,
+.dark-mode .action-btn.tertiary.delete-icon-only:focus {
+  background: #3D2626;
+  border-color: #4D3333;
+  color: #EF4444;
+}
+
+/* Modal Styles */
+.dark-mode .modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .modal-content {
+  background: #1A1A1A;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .modal-header {
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .modal-header h3 {
+  color: #E5E5E5;
+}
+
+.dark-mode .modal-footer {
+  border-top: 1px solid #333333;
+}
+
+.dark-mode .form-group label {
+  color: #E5E5E5;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select {
+  background: #262626;
+  border: 1px solid #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group select:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Delete Confirmation Modal */
+.dark-mode .delete-message {
+  color: #E5E5E5;
+}
+
+.dark-mode .delete-warning {
+  color: #A3A3A3;
+}
+
+.dark-mode .action-btn.danger {
+  background: #EF4444;
+  color: #FFFFFF;
+  border: 1px solid #EF4444;
+}
+
+.dark-mode .action-btn.danger:hover,
+.dark-mode .action-btn.danger:focus {
+  background: #DC2626;
+  border-color: #DC2626;
+}
+
+/* Filter Panel */
+.dark-mode .filter-panel {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .filter-header h4 {
+  color: #E5E5E5;
+}
+
+.dark-mode .filter-group label {
+  color: #A3A3A3;
+}
+
+.dark-mode .filter-group select {
+  background: #262626;
+  border: 1px solid #333333;
+  color: #E5E5E5;
+}
+
+/* Settings Panel */
+.dark-mode .settings-panel {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .settings-header {
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .settings-header h4 {
+  color: #E5E5E5;
+}
+
+.dark-mode .setting-group > label {
+  color: #A3A3A3;
+}
+
+.dark-mode .setting-options label {
+  color: #E5E5E5;
+}
+
+/* Table Layout Styles */
+.dark-mode .controls-bar {
+  background: #1A1A1A;
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .results-info {
+  color: #A3A3A3;
+}
+
+.dark-mode .results-dropdown {
+  background: #262626;
+  border: 1px solid #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .table-container {
+  background: #1A1A1A;
+}
+
+.dark-mode .contacts-table th {
+  background: #262626;
+  border-bottom: 1px solid #333333;
+  color: #A3A3A3;
+}
+
+.dark-mode .contacts-table td {
+  border-bottom: 1px solid #333333;
+}
+
+.dark-mode .contacts-table tr:hover {
+  background: #262626;
+}
+
+/* Contact Name Cell */
+.dark-mode .contact-name-info .name {
+  color: #E5E5E5;
+}
+
+.dark-mode .contact-name-info .timestamp {
+  color: #A3A3A3;
+}
+
+/* Contact Details Cell */
+.dark-mode .contact-details .contact-email,
+.dark-mode .contact-details .contact-phone {
+  color: #E5E5E5;
+}
+
+.dark-mode .contact-details .contact-email svg,
+.dark-mode .contact-details .contact-phone svg {
+  color: #A3A3A3;
+}
+
+/* Company Info */
+.dark-mode .company-info {
+  color: #E5E5E5;
+}
+
+.dark-mode .company-icon {
+  color: #A3A3A3;
+}
+
+/* Owner Info */
+.dark-mode .owner-avatar {
+  background: #3B82F6;
+}
+
+.dark-mode .owner-info span {
+  color: #E5E5E5;
+}
+
+/* Pagination Controls */
+.dark-mode .pagination-btn {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  color: #E5E5E5;
+}
+
+.dark-mode .pagination-btn:hover:not(:disabled) {
+  background: #262626;
+  border-color: #3B82F6;
+  color: #3B82F6;
+}
+
+.dark-mode .pagination-btn.active {
+  background: #3B82F6;
+  border-color: #3B82F6;
+  color: #FFFFFF;
+}
+
+.dark-mode .pagination-ellipsis {
+  color: #A3A3A3;
+}
+
+.dark-mode .page-info {
+  color: #A3A3A3;
+}
+
+/* Select Mode Styles */
+.dark-mode .bulk-actions-bar {
+  background: #1A1A1A;
+  border: 1px solid #3B82F6;
+}
+
+.dark-mode .bulk-actions-left .selected-count {
+  color: #3B82F6;
+}
+
+.dark-mode .bulk-action-btn {
+  background: #1A1A1A;
+  color: #E5E5E5;
+  border: 1px solid #333333;
+}
+
+.dark-mode .bulk-action-btn:hover {
+  background: #262626;
+  border-color: #A3A3A3;
+}
+
+.dark-mode .bulk-action-btn.edit {
+  border-color: #F59E0B;
+  color: #F59E0B;
+}
+
+.dark-mode .bulk-action-btn.edit:hover {
+  background: #2D2A1A;
+  border-color: #D97706;
+}
+
+.dark-mode .bulk-action-btn.delete {
+  border-color: #EF4444;
+  color: #EF4444;
+}
+
+.dark-mode .bulk-action-btn.delete:hover {
+  background: #2D1B1B;
+  border-color: #DC2626;
+}
+
+/* Contact Card Select Mode */
+.dark-mode .contact-card.select-mode.selected {
+  background: #1A2332;
+  border-color: #3B82F6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .contact-checkbox input[type="checkbox"] {
+  accent-color: #3B82F6;
+}
+
+/* Table Select Mode */
+.dark-mode .contacts-table tr.select-mode.selected {
+  background: #1A2332;
+  border-left: 3px solid #3B82F6;
+}
+
+.dark-mode .contacts-table tr.select-mode:hover {
+  background: #262626;
+}
+
+.dark-mode .contacts-table tr.select-mode.selected:hover {
+  background: #1F2937;
+}
+
+/* Custom Scrollbar - Dark Mode */
+.dark-mode .contacts-container::-webkit-scrollbar,
+.dark-mode .contact-info-section::-webkit-scrollbar {
+  width: 6px;
+  background: #111111;
+}
+
+.dark-mode .contacts-container::-webkit-scrollbar-track,
+.dark-mode .contact-info-section::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+.dark-mode .contacts-container::-webkit-scrollbar-thumb,
+.dark-mode .contact-info-section::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+.dark-mode .contacts-container::-webkit-scrollbar-thumb:hover,
+.dark-mode .contact-info-section::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* No Contacts - Dark Mode */
+.dark-mode .no-contacts {
+  color: #A3A3A3;
+}

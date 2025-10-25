@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import contactData from './contact_list.json';
 import './ContactScreen.css';
+import './ContactScreen-dark.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faSearch, 
@@ -17,7 +18,9 @@ import {
   faEdit,
   faTrash,
   faTimes,
-  faEllipsisV
+  faEllipsisV,
+  faMoon,
+  faSun
 } from '@fortawesome/free-solid-svg-icons';
 
 // Import new components
@@ -35,6 +38,7 @@ const ContactScreen = () => {
   const [selectedContact, setSelectedContact] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
+  const [sortField, setSortField] = useState('name'); // which field to sort by
   const [showAddContact, setShowAddContact] = useState(false);
   const [showEditContact, setShowEditContact] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -54,6 +58,7 @@ const ContactScreen = () => {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedContacts, setSelectedContacts] = useState(new Set());
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
   const [newContact, setNewContact] = useState({
     name: '',
     phone: '',
@@ -78,6 +83,20 @@ const ContactScreen = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, filterTag]);
+
+  // Load dark mode preference on mount
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+    if (savedDarkMode) {
+      document.body.classList.add('dark-mode');
+    }
+  }, []);
+
+  // Save dark mode preference
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode.toString());
+  }, [darkMode]);
 
   // Close filter panel when clicking outside
   useEffect(() => {
@@ -111,12 +130,30 @@ const ContactScreen = () => {
       return matchesSearch && matchesFilter;
     });
 
-    filtered.sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a.name.localeCompare(b.name);
-      } else {
-        return b.name.localeCompare(a.name);
+    // Sort based on selected field and order
+    const getFieldValue = (c, field) => {
+      switch(field) {
+        case 'name':
+          return (c.name || '').toString().toLowerCase();
+        case 'email':
+          return (c.email || '').toString().toLowerCase();
+        case 'tags':
+          return ((c.tags && c.tags[0]) || '').toString().toLowerCase();
+        case 'address':
+          return (c.address || '').toString().toLowerCase();
+        case 'relation':
+          return (c.relation || '').toString().toLowerCase();
+        default:
+          return (c.name || '').toString().toLowerCase();
       }
+    };
+
+    filtered.sort((a, b) => {
+      const va = getFieldValue(a, sortField);
+      const vb = getFieldValue(b, sortField);
+      if (va < vb) return sortOrder === 'asc' ? -1 : 1;
+      if (va > vb) return sortOrder === 'asc' ? 1 : -1;
+      return 0;
     });
 
     return filtered;
@@ -335,6 +372,16 @@ const ContactScreen = () => {
     setSelectedContacts(new Set());
   }, [selectMode]);
 
+  const handleDarkModeToggle = useCallback(() => {
+    setDarkMode(!darkMode);
+    // Apply or remove dark mode class to body
+    if (!darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
+
   const handleContactSelect = useCallback((contact, isSelected) => {
     const newSelectedContacts = new Set(selectedContacts);
     if (isSelected) {
@@ -355,6 +402,16 @@ const ContactScreen = () => {
       setSelectedContacts(allContactIds);
     }
   }, [selectedContacts.size, paginatedContacts]);
+
+  // Toggle sort field and order
+  const toggleSort = useCallback((field) => {
+    if (sortField === field) {
+      setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortOrder('asc');
+    }
+  }, [sortField]);
 
   const handleBulkDelete = useCallback(() => {
     openDeleteConfirm(null, 'bulk');
@@ -388,7 +445,7 @@ const ContactScreen = () => {
   };
 
   return (
-    <div className="contact-screen">
+    <div className={`contact-screen ${darkMode ? 'dark-mode' : ''}`}>
       <div className={`main-content ${selectedContact ? 'with-panel' : ''}`}>
         {/* Header */}
         <div className="contact-header-bar">
@@ -454,6 +511,15 @@ const ContactScreen = () => {
                 <FontAwesomeIcon icon={faList} />
               </button>
             </div>
+            
+            {/* Dark Mode Toggle */}
+            <button 
+              className="theme-toggle"
+              title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              onClick={handleDarkModeToggle}
+            >
+              <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
+            </button>
             
             <button 
               className="control-btn primary" 
@@ -528,20 +594,49 @@ const ContactScreen = () => {
                       />
                     </th>
                   )}
-                  <th className="contact-name-col">
+                  <th
+                    className={`contact-name-col sortable ${sortField === 'name' ? 'active-sort' : ''}`}
+                    onClick={() => toggleSort('name')}
+                    title="Sort by contact name"
+                  >
                     CONTACT NAME <FontAwesomeIcon icon={faSort} />
                   </th>
-                  <th className="contact-col">
+                  <th
+                    className={`contact-col sortable ${sortField === 'email' ? 'active-sort' : ''}`}
+                    onClick={() => toggleSort('email')}
+                    title="Sort by contact (email)"
+                  >
                     CONTACT <FontAwesomeIcon icon={faSort} />
                   </th>
                   <th className="lead-source-col">
-                    TAGS <FontAwesomeIcon icon={faSort} />
+                    <span
+                      className={`sortable ${sortField === 'tags' ? 'active-sort' : ''}`}
+                      onClick={() => toggleSort('tags')}
+                      title="Sort by tag"
+                      style={{display: 'inline-flex', alignItems: 'center', gap: 6}}
+                    >
+                      TAGS <FontAwesomeIcon icon={faSort} />
+                    </span>
                   </th>
                   <th className="company-col">
-                    ADDRESS <FontAwesomeIcon icon={faSort} />
+                    <span
+                      className={`sortable ${sortField === 'address' ? 'active-sort' : ''}`}
+                      onClick={() => toggleSort('address')}
+                      title="Sort by address"
+                      style={{display: 'inline-flex', alignItems: 'center', gap: 6}}
+                    >
+                      ADDRESS <FontAwesomeIcon icon={faSort} />
+                    </span>
                   </th>
                   <th className="contact-owner-col">
-                    RELATION <FontAwesomeIcon icon={faSort} />
+                    <span
+                      className={`sortable ${sortField === 'relation' ? 'active-sort' : ''}`}
+                      onClick={() => toggleSort('relation')}
+                      title="Sort by relation"
+                      style={{display: 'inline-flex', alignItems: 'center', gap: 6}}
+                    >
+                      RELATION <FontAwesomeIcon icon={faSort} />
+                    </span>
                   </th>
                   {!selectMode && (
                     <th className="actions-col">
